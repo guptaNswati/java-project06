@@ -2,7 +2,7 @@ package lazyTrees;
 
 import java.util.*;
 /**
- * BST with lazy deletion to keep track of deleted as well as non deleted nodes
+ * BST with lazy deletion which deletes nodes marked for deletion and keep track of all nodes
  * @author swati
  * @param <E> bounded generic object
  */
@@ -90,6 +90,10 @@ implements Cloneable
 		return (mSize != oldSize);
 	}
 	
+	/**
+	 * calls collectGarbage to clean tree
+	 * @return true if mSize and mSizeHard are equal after garbage collection
+	 */
 	public boolean collectGarbage() 
 	{
 		// TODO Auto-generated method stub
@@ -120,27 +124,32 @@ implements Cloneable
 		newObject.mSize = mSize;
 		return newObject;
 	}
-	
-	// return true minimum node
+	/**
+	 * return true minimum node of the tree, marked or unmarked
+	 * @param root node of type LazySTNode
+	 * @return minimum node
+	 */
 	protected LazySTNode findMinHard(LazySTNode root)
 	{
 		if (root == null)
 			return null;
 		if (root.lftChild == null)
 			return root;
-		return findMinHard(root.lftChild);
-		
+		return findMinHard(root.lftChild);		
 	}
 	
-	// return true maximum node
+	/**
+	 * return true maximum node of the tree, marked or unmarked
+	 * @param root node of type LazySTNode
+	 * @return maximum node
+	 */ 
 	protected LazySTNode findMaxHard(LazySTNode root)
 	{
 		if (root == null)
 			return null;
 		if (root.rtChild == null)
 			return root;
-		return findMaxHard(root.rtChild);
-		
+		return findMaxHard(root.rtChild);		
 	}
 
 	// finds the minimum 
@@ -192,7 +201,7 @@ implements Cloneable
 		{
 			root.deleted = false;		
 			numDeletedNodes--;
-			mSize++;
+			mSize++;			
 			mSizeHard = mSize + numDeletedNodes;
 		}
 		
@@ -231,15 +240,20 @@ implements Cloneable
 			remove(root.rtChild, x);
 	}
 	
-	// actually removes the nodes
+	/**
+	 * disconnect one node at a time marked for deletion from tree
+	 * @param root node of type LazySTNode
+	 * @param x data
+	 * @return deleted node
+	 */
 		protected LazySTNode removeHard( LazySTNode root, E x)
 		{
 			if (root == null)
 				return null;
 			
 			// since remove(LazySTNode root, E x) can traverse both left and right, so here we are directly at the root we have to remove
-			 // the node has two children, so replace the node with minimum element in its right subtree
-			else if(root.lftChild != null && root.rtChild != null)
+			// the node has two children, so replace the node with minimum element in its right subtree
+			if (root.lftChild != null && root.rtChild != null)
 			{						   
 					root.data = findMin(root.rtChild).data;	
 				    root.deleted = findMin(root.rtChild).deleted;
@@ -256,14 +270,26 @@ implements Cloneable
 			return root;		
 		}
 		
+		/**
+		 * Traverses left and right to clean up tree
+		 * calls removeHard() to delete nodes marked for deletion
+		 * @param root node of type LazySTNode
+		 * @return deleted node
+		 */
 		protected LazySTNode collectGarbage(LazySTNode root)
 		{		
 			if(root == null)
 				return null;
-
-			root.lftChild = collectGarbage(root.lftChild);	
-			root.rtChild = collectGarbage(root.rtChild);
 			
+			if(root.lftChild != null)
+			{			
+				root.lftChild = collectGarbage(root.lftChild);
+			}
+			
+			if(root.rtChild != null)
+			{			
+				root.rtChild = collectGarbage(root.rtChild);
+			}
             // check if node is marked deleted, call removeHard() and delete it
 			if(root.deleted)
 			{

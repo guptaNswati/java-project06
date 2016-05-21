@@ -11,7 +11,7 @@ import java.util.Scanner;
  * Implements BST with lazy deletion to keep track of total inventory ("deleted" + non deleted) 
  * and current inventory (non deleted only).
  *
- * @author Foothill College, [YOUR NAME HERE]
+ * @author Foothill College, [Swati]
  */
 public class SuperMarket 
 {
@@ -210,10 +210,15 @@ public class SuperMarket
 //		final String TESTFILE = "resources/inventory_log.txt";	// Directory path for plain-text file
 
 		// NOTE: Short inventory file to test for removal of root node from LazySearchTree
-		final String TESTFILE = "resources/inventory_short.txt";	
+//		final String TESTFILE = "resources/inventory_short.txt";	
 
 		// NOTE: An example of testing the boundary condition when removing an item that may not exist
-		///final String TESTFILE = "resources/inventory_invalid_removal.txt";	
+//		final String TESTFILE = "resources/inventory_invalid_removal.txt";	
+		
+		// additional test files
+//		final String TESTFILE = "resources/inventory_findMax()_testcase.txt";
+		
+		final String TESTFILE = "resources/inventory_empty_tree_testcase.txt";
 
 		System.out.printf("Test file: %s \n", TESTFILE);
 

@@ -1,0 +1,13 @@
+add mango
+buy mango
+add tomato
+buy tomato
+add cake
+buy cake
+add fish
+buy fish
+add chicken
+buy chicken
+add cereal
+buy cereal
+add cookies
