@@ -207,7 +207,7 @@ public class SuperMarket
 	public static void main(String[] args) 
 	{
 		// TODO: Tests the LazySearchTree by adding and removing items from the inventory
-//		final String TESTFILE = "resources/inventory_log.txt";	// Directory path for plain-text file
+		final String TESTFILE = "resources/inventory_log.txt";	// Directory path for plain-text file
 
 		// NOTE: Short inventory file to test for removal of root node from LazySearchTree
 //		final String TESTFILE = "resources/inventory_short.txt";	
@@ -218,7 +218,7 @@ public class SuperMarket
 		// additional test files
 //		final String TESTFILE = "resources/inventory_findMax()_testcase.txt";
 		
-		final String TESTFILE = "resources/inventory_empty_tree_testcase.txt";
+//		final String TESTFILE = "resources/inventory_empty_tree_testcase.txt";
 
 		System.out.printf("Test file: %s \n", TESTFILE);
 
