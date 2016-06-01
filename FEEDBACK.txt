@@ -1,0 +1,138 @@
+FEEDBACK:
+
+Good implementation of garbage collection of your LazySearchTree class!
+  You're very close.
+  Make sure to check for boundary cases.
+
+
+-1 Incomplete implementation of garbage collection which does not
+   correctly remove the minimum nodes that have not been marked as deleted.
+   See sample output 1 and 2 below.
+   
+   Suggestion: Check for deleted maximum node has well.
+   
+   
+-0.5 Incomplete documentation of your source code.
+     Why skip key methods such as findMin() and findMax() which you've 
+     updated with lazy deletion?
+     
+-Bita.
+
+
+
+sample output 1:
+...
+
+Update at line #4: buy lychee
+"hard" number of unique items (i.e. mSizeHard) = 3
+"soft" number of unique items (i.e. mSize) = 2
+
+Testing traversing "hard" inventory:
+lychee:0  milk:1  tomatoes:1  
+
+Testing traversing "soft" inventory:
+milk:1  tomatoes:1  
+
+
+at line #4: buy lychee
+First item: milk:1 
+Last item: tomatoes:1 
+
+at line #4: buy lychee
+calling garbage collection...  <----------------
+
+inventory after garbage collection:
+"hard" number of unique items (i.e. mSizeHard) = 2
+"soft" number of unique items (i.e. mSize) = 2
+
+Testing traversing "hard" inventory:
+lychee:0  milk:1  tomatoes:1  
+
+Testing traversing "soft" inventory:
+milk:1  tomatoes:1  
+
+
+
+State of inventory before cleanup:
+"hard" number of unique items (i.e. mSizeHard) = 2
+"soft" number of unique items (i.e. mSize) = 2
+
+Testing traversing "hard" inventory:
+lychee:0  milk:1  tomatoes:1  
+
+Testing traversing "soft" inventory:
+milk:1  tomatoes:1  
+
+
+
+Final state of inventory after cleanup:
+"hard" number of unique items (i.e. mSizeHard) = 1
+"soft" number of unique items (i.e. mSize) = 2
+
+Testing traversing "hard" inventory:
+lychee:0  milk:1  tomatoes:1  
+
+Testing traversing "soft" inventory:
+milk:1  tomatoes:1  
+
+Done.
+
+
+
+
+sample output 2:
+...
+
+Update at line #7: buy cabbage
+"hard" number of unique items (i.e. mSizeHard) = 4
+"soft" number of unique items (i.e. mSize) = 1
+
+Testing traversing "hard" inventory:
+apple:0  bread:0  butter:1  cabbage:0  
+
+Testing traversing "soft" inventory:
+butter:1  
+
+
+at line #7: buy cabbage
+First item: butter:1 
+Last item: butter:1 
+
+at line #7: buy cabbage
+calling garbage collection...  <----------------
+
+inventory after garbage collection:
+"hard" number of unique items (i.e. mSizeHard) = 1
+"soft" number of unique items (i.e. mSize) = 1
+
+Testing traversing "hard" inventory:
+bread:0  butter:1  
+
+Testing traversing "soft" inventory:
+butter:1  
+
+
+
+State of inventory before cleanup:
+"hard" number of unique items (i.e. mSizeHard) = 1
+"soft" number of unique items (i.e. mSize) = 1
+
+Testing traversing "hard" inventory:
+bread:0  butter:1  
+
+Testing traversing "soft" inventory:
+butter:1  
+
+
+
+Final state of inventory after cleanup:
+"hard" number of unique items (i.e. mSizeHard) = 0
+"soft" number of unique items (i.e. mSize) = 1
+
+Testing traversing "hard" inventory:
+bread:0  butter:1  
+
+Testing traversing "soft" inventory:
+butter:1  
+
+Done.
